@@ -9,7 +9,7 @@ const app = new Application({
 	height: 480
 });
 
-const clampy: Sprite = Sprite.from("clampy.png");
+const clampy: Sprite = Sprite.from("sprites/clampy.png");
 
 clampy.anchor.set(0.5);
 
