@@ -1,4 +1,4 @@
-import { Application, Sprite } from 'pixi.js'
+import { Application, Container, Sprite } from 'pixi.js'
 
 const app = new Application({
 	view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
@@ -9,11 +9,17 @@ const app = new Application({
 	height: 480
 });
 
+const conty: Container = new Container();
+conty.x = 100;
+conty.y = 100;
+conty.scale.set(1, 1)
+conty.rotation = 90 * Math.PI / 180
+app.stage.addChild(conty);
+
 const clampy: Sprite = Sprite.from("sprites/clampy.png");
-
-clampy.anchor.set(0.5);
-
-clampy.x = app.screen.width / 2;
-clampy.y = app.screen.height / 2;
-
-app.stage.addChild(clampy);
+clampy.texture.baseTexture.on('loaded', () => {
+	clampy.x = - clampy.width / 2;
+	clampy.y = - clampy.height / 2;
+})
+clampy.rotation = 0 * Math.PI / 180
+conty.addChild(clampy);
